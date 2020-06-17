@@ -6,8 +6,9 @@ def merge(arrA, arrB):
     # Your code here
     a = 0 
     b = 0
+    print(arrA, arrB)
 
-    for k in range(0, elements):
+    for k in range(elements):
         if a >= len(arrA):
             merged_arr[k] = arrB[b]
             b += 1
