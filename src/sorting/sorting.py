@@ -1,9 +1,23 @@
 # TO-DO: complete the helper function below to merge 2 sorted arrays
 def merge(arrA, arrB):
     elements = len(arrA) + len(arrB)
-    merged_arr = [0] * elements
+    merged_arr = []
 
     # Your code here
+    print(arrA, arrB)
+    for i in range(elements):
+    # whichever is smaller, add to the merged_arr and pop from original
+        if len(arrA) == 0:
+            merged_arr.extend(arrB)
+        elif len(arrB) == 0:
+            merged_arr.extend(arrA)
+        elif arrA[0] < arrB[0]:
+            merged_arr.append(arrA[0])
+            arrA.pop(0)
+        else:
+            merged_arr.append(arrB[0])
+            arrB.pop(0)
+    print(merged_arr)
 
 
     return merged_arr
@@ -13,36 +27,21 @@ def merge_sort(arr):
     # Your code here
 
     # divide given arr into lists of elements
-    n = 1
-    lists = [arr[i * n:(i + 1) * n] for i in range((len(arr) + n - 1) // n )]  
-    print(lists)
+    lists = [arr[i:i+1] for i in range(len(arr))] 
+    print("FULL: ", lists)
+    arr2 = []
 
     # take sequential pairs of lists
-    # list comprehension
-    # lists = [[lists[idx][0], lists[idx + 1][0]].sort()] for idx in range(0, len(lists), 2)]  
-    # print(lists) 
-
-    lists2 = []
-    print("LEN: ", len(lists))
+    print("LEN1: ", len(lists))
     for idx in range(0, len(lists), 2):
         print("IDX: ", idx)
         # compare first indexes
-        
-        to_sort = [lists[idx][0], lists[idx + 1][0]]
-        to_sort.sort()
-        lists2.append(to_sort)
-        # if lists[idx][0] < lists[idx + 1][0]:
+        arr = merge(lists[idx], lists[idx + 1])
+        arr2.append(arr)
+        print(arr2)
 
-
-    merge_sort(lists2)
-            
-            # append lower value
-            # repeat until until pairs are completely appended
-    
-
-
-
-    return lists2
+    merge_sort(arr2)
+    return arr
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory

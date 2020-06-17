@@ -1,6 +1,6 @@
 import unittest
 import random
-from sorting import *
+from sorting_2 import *
 
 class RecursiveSortingTests(unittest.TestCase):
     def test_merge_sort(self):
