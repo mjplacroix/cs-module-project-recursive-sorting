@@ -11,10 +11,38 @@ def merge(arrA, arrB):
 # TO-DO: implement the Merge Sort function below recursively
 def merge_sort(arr):
     # Your code here
-    print(len(arr))
+
+    # divide given arr into lists of elements
+    n = 1
+    lists = [arr[i * n:(i + 1) * n] for i in range((len(arr) + n - 1) // n )]  
+    print(lists)
+
+    # take sequential pairs of lists
+    # list comprehension
+    # lists = [[lists[idx][0], lists[idx + 1][0]].sort()] for idx in range(0, len(lists), 2)]  
+    # print(lists) 
+
+    lists2 = []
+    print("LEN: ", len(lists))
+    for idx in range(0, len(lists), 2):
+        print("IDX: ", idx)
+        # compare first indexes
+        
+        to_sort = [lists[idx][0], lists[idx + 1][0]]
+        to_sort.sort()
+        lists2.append(to_sort)
+        # if lists[idx][0] < lists[idx + 1][0]:
 
 
-    return arr
+    merge_sort(lists2)
+            
+            # append lower value
+            # repeat until until pairs are completely appended
+    
+
+
+
+    return lists2
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
